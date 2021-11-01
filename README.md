@@ -1,4 +1,4 @@
-# bidichk - check for dangerous unicode character sequences
+# bidichk - checks for dangerous unicode character sequences
 
 bidichk finds dangerous unicode character sequences in Go source files.
 

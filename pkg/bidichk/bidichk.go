@@ -11,7 +11,7 @@ import (
 
 var Analyzer = &analysis.Analyzer{
 	Name: "bidichk",
-	Doc:  "Check for dangerous unicode character sequences",
+	Doc:  "Checks for dangerous unicode character sequences",
 	Run:  run,
 }
 
@@ -53,7 +53,7 @@ func check(filename string, pos token.Pos, pass *analysis.Pass) error {
 
 	for name, r := range disallowedRunes {
 		if bytes.ContainsRune(body, r) {
-			pass.Reportf(pos, "found dangerous unicode character sequence %s at position %d", name, bytes.IndexRune(body, r))
+			pass.Reportf(pos+token.Pos(bytes.IndexRune(body, r)), "found dangerous unicode character sequence %s", name)
 		}
 	}
 
