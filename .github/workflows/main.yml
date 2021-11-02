@@ -48,4 +48,4 @@ jobs:
           golangci-lint --version
 
       - name: Lint
-        run: golangci run
+        run: golangci-lint run
