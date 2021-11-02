@@ -23,11 +23,7 @@ func run(pass *analysis.Pass) (interface{}, error) {
 			return true
 		}
 
-		err = check(f.Name(), f.Pos(0), pass)
-		if err != nil {
-			return false
-		}
-		return true
+		return check(f.Name(), f.Pos(0), pass) == nil
 	})
 
 	return nil, err
