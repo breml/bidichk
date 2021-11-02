@@ -5,6 +5,7 @@ import (
 	"go/token"
 	"os"
 	"strings"
+	"unicode/utf8"
 
 	"golang.org/x/tools/go/analysis"
 )
@@ -48,8 +49,14 @@ func check(filename string, pos token.Pos, pass *analysis.Pass) error {
 	}
 
 	for name, r := range disallowedRunes {
-		if bytes.ContainsRune(body, r) {
-			pass.Reportf(pos+token.Pos(bytes.IndexRune(body, r)), "found dangerous unicode character sequence %s", name)
+		start := 0
+		for {
+			if !bytes.ContainsRune(body[start:], r) {
+				break
+			}
+			start += bytes.IndexRune(body[start:], r)
+			pass.Reportf(pos+token.Pos(start), "found dangerous unicode character sequence %s", name)
+			start += utf8.RuneLen(r)
 		}
 	}
 
