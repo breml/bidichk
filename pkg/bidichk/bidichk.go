@@ -51,11 +51,14 @@ func check(filename string, pos token.Pos, pass *analysis.Pass) error {
 	for name, r := range disallowedRunes {
 		start := 0
 		for {
-			if !bytes.ContainsRune(body[start:], r) {
+			idx := bytes.IndexRune(body[start:], r)
+			if idx == -1 {
 				break
 			}
-			start += bytes.IndexRune(body[start:], r)
+			start += idx
+
 			pass.Reportf(pos+token.Pos(start), "found dangerous unicode character sequence %s", name)
+
 			start += utf8.RuneLen(r)
 		}
 	}
