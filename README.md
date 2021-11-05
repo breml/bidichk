@@ -1,5 +1,7 @@
 # bidichk - checks for dangerous unicode character sequences
 
+[![Test Status](https://github.com/breml/bidichk/workflows/Go%20Matrix/badge.svg)](https://github.com/breml/logstash-config/actions?query=workflow%3AGo%20Matrix) [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+
 bidichk finds dangerous unicode character sequences in Go source files.
 
 ## Considered dangerous unicode characters
@@ -22,3 +24,4 @@ The following unicode characters are considered dangerous:
 * [Trojan Source - Proofs-of-Concept](https://github.com/nickboucher/trojan-source)
 * [Go proposal: disallow LTR/RTL characters in string literals?](https://github.com/golang/go/issues/20209)
 * [cockroachdb/cockroach - PR: lint: add linter for unicode directional formatting characters](https://github.com/cockroachdb/cockroach/pull/72287)
+* [Russ Cox - On “Trojan Source” Attacks](https://research.swtch.com/trojan)
