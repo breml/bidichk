@@ -7,5 +7,5 @@ import (
 )
 
 func main() {
-	singlechecker.Main(bidichk.Analyzer)
+	singlechecker.Main(bidichk.NewAnalyzer())
 }
