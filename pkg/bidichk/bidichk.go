@@ -120,6 +120,7 @@ type bidichk struct {
 	disallowedRunes disallowedRunes
 }
 
+// NewAnalyzer return a new bidichk analyzer.
 func NewAnalyzer() *analysis.Analyzer {
 	bidichk := bidichk{}
 	bidichk.disallowedRunes = make(map[string]rune, len(runeLookup))
