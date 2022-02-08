@@ -29,3 +29,5 @@ release:
   github:
     owner: breml
     name: bidichk
+gomod:
+  proxy: true
