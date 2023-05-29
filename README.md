@@ -30,7 +30,7 @@ go get github.com/breml/bidichk/cmd/bidichk
 
 ### golangci-lint
 
-[golangci-lint](https://golangci-lint.run) supports thelper, so you can enable this linter and use it.
+[golangci-lint](https://golangci-lint.run) supports bidichk, so you can enable this linter and use it.
 
 ### Shell
 
