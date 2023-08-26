@@ -13,24 +13,24 @@ jobs:
     name: Main Process
     runs-on: ubuntu-latest
     env:
-      GO_VERSION: "1.19"
-      GOLANGCI_LINT_VERSION: v1.45.2
+      GO_VERSION: "1.20"
+      GOLANGCI_LINT_VERSION: v1.51.2
       CGO_ENABLED: 0
 
     steps:
 
       - name: Set up Go ${{ env.GO_VERSION }}
-        uses: actions/setup-go@v2
+        uses: actions/setup-go@v4
         with:
           go-version: ${{ env.GO_VERSION }}
 
       - name: Check out code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           fetch-depth: 0
 
       - name: Cache Go modules
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: ~/go/pkg/mod
           key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
