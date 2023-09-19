@@ -31,3 +31,11 @@ jobs:
           args: release --clean
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  # https://github.com/marketplace/actions/go-proxy-warming
+  pkg-go-dev-warming:
+    name: Renew documentation
+    runs-on: ubuntu-latest
+    steps:
+    - name: Pull new module version
+      uses: andrewslotin/go-proxy-pull-action@master
