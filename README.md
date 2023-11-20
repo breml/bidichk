@@ -23,7 +23,7 @@ The following unicode characters are considered dangerous:
 Download `bidichk` from the [releases](https://github.com/breml/bidichk/releases) or get the latest version from source with:
 
 ```shell
-go get github.com/breml/bidichk/cmd/bidichk
+go install github.com/breml/bidichk/cmd/bidichk@latest
 ```
 
 ## Usage
