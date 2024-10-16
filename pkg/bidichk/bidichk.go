@@ -146,24 +146,24 @@ func (b bidichk) run(pass *analysis.Pass) (interface{}, error) {
 	if readFile == nil {
 		readFile = os.ReadFile
 	}
+
 	for _, astFile := range pass.Files {
 		f := pass.Fset.File(astFile.FileStart)
 		if f == nil {
 			continue
 		}
-		if err := b.check(readFile, f.Name(), f.Pos(0), pass); err != nil {
+
+		body, err := readFile(f.Name())
+		if err != nil {
 			return nil, err
 		}
+
+		b.check(body, f.Pos(0), pass)
 	}
 	return nil, nil
 }
 
-func (b bidichk) check(readFile func(string) ([]byte, error), filename string, pos token.Pos, pass *analysis.Pass) error {
-	body, err := readFile(filename)
-	if err != nil {
-		return err
-	}
-
+func (b bidichk) check(body []byte, pos token.Pos, pass *analysis.Pass) {
 	for name, r := range b.disallowedRunes {
 		start := 0
 		for {
@@ -178,6 +178,4 @@ func (b bidichk) check(readFile func(string) ([]byte, error), filename string, p
 			start += utf8.RuneLen(r)
 		}
 	}
-
-	return nil
 }
